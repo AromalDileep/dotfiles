@@ -1,0 +1,9 @@
+[init]
+    defaultBranch = main
+
+[user]
+    name = Aromal Dileep
+    email = aromaldileep96@gmail.com
+
+[include]
+    path = ~/.gitconfig.local
