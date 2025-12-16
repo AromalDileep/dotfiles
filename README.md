@@ -3,27 +3,25 @@
 # Dotfiles
 
 This repository contains my personal dotfiles, managed using **GNU Stow**.
-The goal is to keep all configuration files version-controlled, modular,
-and easily reproducible across systems.
+The goal is to keep all configuration files **version-controlled, modular, and reproducible** across systems while keeping `$HOME` clean.
 
-This is a **private repository**, intended purely for my own reference and
-understanding.
+This is a **private repository**, intended for my own learning, reference, and long-term maintainability.
 
 ---
 
 ## Why GNU Stow
 
-GNU Stow is used to manage dotfiles via **symbolic links** instead of copying
-files into `$HOME`.
+GNU Stow is used to manage dotfiles via **symbolic links** instead of copying files directly into `$HOME`.
 
-Advantages:
-- Single source of truth for all configs
-- Easy to add/remove entire config groups
-- Clean `$HOME` (no duplicated files)
-- Safe to version control
-- Reversible at any time
+### Advantages
 
-Stow never edits files — it only creates or removes symlinks.
+* Single source of truth for all configuration
+* Modular management (add/remove whole config groups)
+* Clean `$HOME` (no duplicated config files)
+* Safe to version control
+* Fully reversible
+
+Stow **never edits files** — it only creates or removes symlinks.
 
 ---
 
@@ -32,54 +30,61 @@ Stow never edits files — it only creates or removes symlinks.
 Each **top-level directory** is a *Stow package*.
 A package mirrors the directory structure **relative to `$HOME`**.
 
-Example structure:
+Example:
+
 ```
 .dotfiles/
 ├── ideavim
-│   └── .ideavimrc
+│   └── .ideavimrc
+├── git
+│   └── .gitconfig
 ├── kitty
-│   └── .config
-│       └── kitty
-│           └── kitty.conf
-├── README.md
+│   └── .config
+│       └── kitty
+│           └── kitty.conf
 ├── starship
-│   └── .config
-│       └── starship.toml
+│   └── .config
+│       └── starship.toml
 ├── tmux
-│   └── .tmux.conf
-└── zsh
-    └── .zshrc
+│   └── .tmux.conf
+├── zsh
+│   └── .zshrc
+└── README.md
 ```
 
-What this means:
-- `zsh/.zshrc`
+Mapping examples:
+
+* `zsh/.zshrc`
   → `$HOME/.zshrc`
-- `kitty/.config/kitty/kitty.conf`
+* `kitty/.config/kitty/kitty.conf`
   → `$HOME/.config/kitty/kitty.conf`
 
-Stow automatically creates the required parent directories and symlinks.
+Stow automatically creates required parent directories and symlinks.
 
 ---
 
 ## How Stow Works (Important)
 
-When you run:
+When running:
+
 ```bash
 stow kitty
 ```
 
 Stow:
+
 1. Reads the `kitty/` directory
 2. Interprets paths **relative to `$HOME`**
 3. Creates symlinks in `$HOME`
 4. Points those symlinks back to this repository
 
-Example result:
+Example:
+
 ```
 ~/.config/kitty/kitty.conf -> ~/.dotfiles/kitty/.config/kitty/kitty.conf
 ```
 
-The **real file lives in `.dotfiles`**.
+The **real files live inside `.dotfiles`**.
 `$HOME` only contains symlinks.
 
 ---
@@ -87,34 +92,37 @@ The **real file lives in `.dotfiles`**.
 ## Usage
 
 ### Initial setup
+
 ```bash
 cd ~/.dotfiles
 ```
 
 ### Stow specific packages
+
 ```bash
 stow zsh
 stow kitty
 ```
 
-You can stow multiple packages at once:
+Multiple packages at once:
+
 ```bash
-stow zsh kitty
+stow zsh kitty tmux
 ```
 
 ---
 
 ### Remove symlinks (unstow)
 
-To remove symlinks created by a package:
 ```bash
 stow -D zsh
 stow -D kitty
 ```
 
 This:
+
 * Removes symlinks from `$HOME`
-* Does **not** delete any files inside `.dotfiles`
+* Does **not** delete files inside `.dotfiles`
 
 ---
 
@@ -122,11 +130,78 @@ This:
 
 1. Edit files **inside `.dotfiles`**
 2. Symlinks update automatically
-3. Reload or restart the application (or use live reload if supported)
-4. Commit changes to git
+3. Reload or restart the relevant application
+4. Commit changes to Git
 
-Never edit the symlinked files in `$HOME` directly — always edit the real files
+Never edit symlinked files in `$HOME` directly — always edit the real files
 inside `.dotfiles`.
+
+---
+
+## Git Configuration (Important)
+
+Git configuration is managed explicitly and securely.
+
+### What is version-controlled
+
+The following is stowed and committed:
+
+```
+git/.gitconfig
+```
+
+It contains:
+
+* User identity (`name`, `email`)
+* Default Git behavior (e.g. default branch)
+* An include directive for local overrides
+
+Example:
+
+```ini
+[init]
+    defaultBranch = main
+
+[user]
+    name = Aromal Dileep
+    email = aromaldileep96@gmail.com
+
+[include]
+    path = ~/.gitconfig.local
+```
+
+---
+
+### What is NOT version-controlled
+
+The following are intentionally **not** stowed or committed:
+
+* `~/.gitconfig.local`
+* `~/.git-credentials`
+* SSH keys or tokens
+
+These files are **machine-specific and security-sensitive**.
+
+`~/.gitconfig.local` is used for:
+
+* Credential helpers
+* Machine-specific Git settings
+* Optional signing keys
+
+Git will continue to work even if `.gitconfig.local` does not exist.
+
+---
+
+### New machine setup (Git)
+
+On a new machine:
+
+1. Clone this repository
+2. Run `stow git`
+3. Authenticate once (SSH key or HTTPS token)
+
+No manual Git reconfiguration is required.
+Credentials are handled locally and regenerated per machine.
 
 ---
 
@@ -134,38 +209,41 @@ inside `.dotfiles`.
 
 Kitty configuration is modular.
 
-Typical setup:
+Typical layout:
+
 ```
 kitty/
 └── .config/kitty/
-    ├── kitty.conf      # root config
-    ├── theme.conf      # active theme include
+    ├── kitty.conf        # entry point
+    ├── theme.conf        # active theme include
     ├── keybindings.conf
-    └── themes/         # kitty-themes repository
+    └── themes/
 ```
 
-`kitty.conf` acts as the entry point and includes other files using:
+`kitty.conf` includes other files using:
+
 ```conf
 include theme.conf
 include keybindings.conf
 ```
 
-Themes are switched by modifying `theme.conf`, not `kitty.conf`.
+Themes are switched by editing `theme.conf`, not `kitty.conf`.
 
 ---
 
 ## Safety Notes
 
-* Do **not** run `stow` from outside `~/.dotfiles`
-* Always `cd ~/.dotfiles` before running stow
+* Always `cd ~/.dotfiles` before running `stow`
 * Avoid filename conflicts between packages
-* Use `stow -n <package>` for a dry run if unsure
+* Use `stow -n <package>` for dry runs
+* Keep backups temporarily when migrating files
 
 ---
 
 ## System Assumptions
 
 This setup assumes:
+
 * Linux
 * `$HOME`-based configuration
 * GNU Stow installed
@@ -181,7 +259,6 @@ This setup assumes:
 * Clean separation of concerns
 * Long-term maintainability
 
-This is **not** meant to be a public or generic dotfiles repo.
-It is optimized for my workflow and preferences.
-
+This repository is **not intended to be generic or public-facing**.
+It is optimized specifically for my workflow and preferences.
 
