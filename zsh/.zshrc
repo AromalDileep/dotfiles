@@ -63,7 +63,7 @@ unset __conda_setup
 
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
-
+# yazi wrapper: sync shell cwd with yazi on exit
 y() {
   local tmp
   tmp="$(mktemp)" || return
