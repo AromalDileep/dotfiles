@@ -1,124 +1,117 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+palette = "catppuccin_mocha"
+
 format = """
-[ ](#7AA2F7)\
-$conda\
-[](bg:#BB9AF7 fg:#7AA2F7)\
 $python\
-[](bg:#7DCFFF fg:#BB9AF7)\
-$username\
-[](bg:#E0AF68 fg:#7DCFFF)\
+$conda\
 $directory\
-[](bg:#9ECE6A fg:#E0AF68)\
 $git_branch\
+$git_state\
 $git_status\
-[](bg:#F7768E fg:#9ECE6A)\
 $cmd_duration\
-[](bg:#7AA2F7 fg:#F7768E)\
-$c\
-$cpp\
-$golang\
-$haskell\
-$java\
-$nodejs\
-$r\
-[ ](fg:#7AA2F7)
+$line_break\
+$character
 """
-add_newline = true
-# ------------------------------------
-# Conda
-# ------------------------------------
-[conda]
-symbol = "🅒 "
-style = "bg:#7AA2F7 fg:#1a1b26"
-format = "[ $symbol$environment ]($style)"
-ignore_base = false
-# ------------------------------------
-# Username
-# ------------------------------------
-[username]
-show_always = true
-style_user = "bg:#7DCFFF fg:#1a1b26"
-style_root = "bg:#7DCFFF"
-format = "[$user ]($style)"
-disabled = false
-# ------------------------------------
+
+# ------------------------
 # Directory
-# ------------------------------------
+# ------------------------
 [directory]
-style = "bg:#E0AF68 fg:#1a1b26"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-# ------------------------------------
+style = "fg:blue"
+
+# ------------------------
+# Character
+# ------------------------
+[character]
+success_symbol = "[❯](fg:mauve)"
+error_symbol = "[❯](fg:red)"
+vimcmd_symbol = "[❮](fg:green)"
+
+# ------------------------
 # Git
-# ------------------------------------
+# ------------------------
 [git_branch]
-symbol = ""
-style = "bg:#9ECE6A fg:#1a1b26"
-format = "[ $symbol $branch ]($style)"
+format = "[$branch]($style) "
+style = "fg:overlay1"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "fg:overlay1"
+
 [git_status]
-style = "bg:#9ECE6A fg:#F7768E"
-format = "[$all_status$ahead_behind ]($style)"
-# ------------------------------------
-# Command Duration
-# ------------------------------------
+style = "fg:teal"
+format = "[$modified$staged$untracked$renamed$deleted$conflicted$ahead_behind$stashed]($style) "
+
+modified = "*"
+staged = "+"
+untracked = "?"
+renamed = "»"
+deleted = "✘"
+conflicted = "!"
+stashed = "≡"
+
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+
+# ------------------------
+# Command Duration (time taken)
+# ------------------------
 [cmd_duration]
-disabled = false
-min_time = 2000
-style = "bg:#F7768E fg:#1a1b26"
-format = "[ Took $duration! ]($style)"
-# ------------------------------------
-# Languages
-# ------------------------------------
-[c]
-symbol = "C "
-style = "bg:#7AA2F7 fg:#1a1b26"
-format = "[ $symbol($version(-$name)) ]($style)"
-disabled = true
-[cpp]
-symbol = " "
-style = "bg:#7AA2F7 fg:#1a1b26"
-format = "[ $symbol($version(-$name)) ]($style)"
-disabled = false
-[golang]
-symbol = " "
-style = "bg:#7AA2F7 fg:#1a1b26"
-format = "[ $symbol($version) ]($style)"
-disabled = false
-[haskell]
-symbol = "󰲒 "
-style = "bg:#7AA2F7 fg:#1a1b26"
-format = "[ $symbol($version) ]($style)"
-disabled = false
-[java]
-symbol = " "
-style = "bg:#7AA2F7 fg:#1a1b26"
-format = "[ ${symbol}(${version}) ]($style)"
-disabled = true
-[nodejs]
-symbol = " "
-style = "bg:#7AA2F7 fg:#1a1b26"
-format = "[ $symbol($version) ]($style)"
-disabled = false
-[rust]
-symbol = " "
-style = "bg:#7AA2F7 fg:#1a1b26"
-format = "[ $symbol($version) ]($style)"
-disabled = false
-# ------------------------------------
-# Python Venv (Only displays name)
-# ------------------------------------
+format = "[$duration]($style) "
+style = "fg:peach"
+
+# ------------------------
+# Python (virtualenv ONLY)
+# ------------------------
 [python]
 disabled = false
-symbol = ""
-style = "bg:#BB9AF7 fg:#1a1b26"
-format = "[ $virtualenv ]($style)"
-pyenv_version_name = false
-python_binary = []
+format = "[$virtualenv]($style) "
+style = "fg:sky"
+
 detect_extensions = []
+detect_files = []
 detect_folders = []
-version_format = ""
+python_binary = []
+
+# ------------------------
+# Conda (after venv)
+# ------------------------
+[conda]
+disabled = false
+format = "[$environment]($style) "
+style = "fg:sapphire"
+ignore_base = false
+
+# ------------------------
+# Catppuccin Mocha Palette
+# ------------------------
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo  = "#f2cdcd"
+pink      = "#f5c2e7"
+mauve     = "#cba6f7"
+red       = "#f38ba8"
+maroon    = "#eba0ac"
+peach     = "#fab387"
+yellow    = "#f9e2af"
+green     = "#a6e3a1"
+teal      = "#94e2d5"
+sky       = "#89dceb"
+sapphire  = "#74c7ec"
+blue      = "#89b4fa"
+lavender  = "#b4befe"
+text      = "#cdd6f4"
+subtext1  = "#bac2de"
+subtext0  = "#a6adc8"
+overlay2  = "#9399b2"
+overlay1  = "#7f849c"
+overlay0  = "#6c7086"
+surface2  = "#585b70"
+surface1  = "#45475a"
+surface0  = "#313244"
+base      = "#1e1e2e"
+mantle    = "#181825"
+crust     = "#11111b"
+
