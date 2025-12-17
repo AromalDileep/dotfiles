@@ -62,6 +62,66 @@ Mapping examples:
 Stow automatically creates required parent directories and symlinks.
 
 ---
+## Tooling Expectations
+
+This repository configures user-level tools but **does not install them**.
+The following tools are expected to be present for the configuration to be
+fully effective.
+
+If a tool is not installed, the system will continue to function, but
+related enhancements or integrations will be inactive.
+
+### Core tools (expected)
+
+These tools are directly configured by this repository:
+
+- **zsh**  
+  Primary shell. All shell behavior and integrations are defined in `.zshrc`.
+
+- **git**  
+  Global Git behavior is configured via `.gitconfig`.  
+  Authentication and credentials are intentionally handled outside this repo.
+
+- **tmux**  
+  Terminal multiplexer configured via `.tmux.conf`.
+
+- **kitty**  
+  Terminal emulator. Configuration is applied only if Kitty is used.
+
+- **starship**  
+  Cross-shell prompt. The prompt configuration assumes Starship is installed
+  and enabled from the shell.
+
+- **IdeaVim**  
+  Vim emulation inside JetBrains IDEs, configured via `.ideavimrc`.
+
+### Integrated CLI tools (optional but recommended)
+
+These tools are referenced or integrated within shell configuration:
+
+- **zoxide**  
+  Enhances directory navigation by replacing the default `cd` command with
+  a frecency-based implementation while preserving `cd` usage.
+
+- **fd**  
+  Modern replacement for `find`.  
+  On Ubuntu/Debian, the binary may be provided as `fdfind` and exposed as `fd`
+  by the distribution. On Arch and macOS, the binary is `fd`.
+
+- **ripgrep (`rg`)**  
+  Fast recursive search utility commonly used in CLI and editor workflows.
+
+- **yazi**  
+  Terminal file manager.  
+  Shell integration logic exists in `.zshrc` to ensure that when Yazi exits,
+  the shell automatically switches to the last directory visited inside Yazi.
+  No Yazi configuration is stowed unless explicitly added.
+
+All tools are expected to be installed using the system package manager
+(e.g. `apt`, `pacman`, `brew`) and are intentionally **not managed by this
+repository**.
+
+---
 
 ## How Stow Works (Important)
 
