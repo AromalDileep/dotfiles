@@ -87,3 +87,10 @@ y() {
 # - Enables frecency-based directory jumping
 # - Overrides `cd` instead of introducing `z`
 eval "$(zoxide init --cmd cd zsh)"
+
+# Created by `pipx` on 2025-12-18 05:34:32
+export PATH="$PATH:/home/aromal/.local/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
