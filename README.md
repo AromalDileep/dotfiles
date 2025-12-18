@@ -1,136 +1,214 @@
+
+
 # Dotfiles
 
-Personal dotfiles managed with **GNU Stow** for version control, modularity, and reproducibility across systems.
+Personal dotfiles managed using **GNU Stow** to achieve a clean, modular, and reproducible system configuration.
+
+This repository is intentionally **private** and optimized for my personal workflow.
 
 ---
 
 ## Why GNU Stow
 
-GNU Stow manages dotfiles via **symbolic links** instead of copying files.
+GNU Stow manages dotfiles by creating **symbolic links** instead of copying files into `$HOME`.
 
-**Advantages:**
-- Single source of truth
-- Easy to add/remove config groups
-- Clean `$HOME` (no duplicates)
-- Safe to version control
-- Fully reversible
+### Advantages
 
-Stow only creates/removes symlinks — it never modifies files.
+* Single source of truth for all configuration
+* Modular management (add/remove entire config groups)
+* Clean `$HOME` (no duplicated files)
+* Safe to version control
+* Fully reversible
+
+Stow **never edits files** — it only creates or removes symlinks.
 
 ---
 
 ## Repository Layout
 
-Each **top-level directory** is a *Stow package* that mirrors `$HOME` structure.
+Each **top-level directory** is a *Stow package*.
+A package mirrors the directory structure **relative to `$HOME`**.
+
 ```
 .dotfiles/
 ├── zsh/
 │   └── .zshrc
 ├── tmux/
 │   └── .tmux.conf
-├── kitty/
-│   └── .config/kitty/
-│       └── kitty.conf
+├── ghostty/
+│   └── .config/ghostty/
+│       └── config
 ├── git/
 │   └── .gitconfig
 ├── starship/
 │   └── .config/starship.toml
-└── ideavim/
-    └── .ideavimrc
+├── ideavim/
+│   └── .ideavimrc
+└── README.md
 ```
 
-**Example:**
-- `tmux/.tmux.conf` → `$HOME/.tmux.conf`
-- `kitty/.config/kitty/kitty.conf` → `$HOME/.config/kitty/kitty.conf`
+### Mapping examples
+
+* `zsh/.zshrc`
+  → `$HOME/.zshrc`
+* `tmux/.tmux.conf`
+  → `$HOME/.tmux.conf`
+* `ghostty/.config/ghostty/config`
+  → `$HOME/.config/ghostty/config`
+
+Stow automatically creates required parent directories and symlinks.
 
 ---
 
 ## Usage
 
-### Setup
+### Initial setup
+
 ```bash
 cd ~/.dotfiles
-stow zsh tmux kitty git starship ideavim
 ```
 
-### Remove symlinks
+### Stow packages
+
 ```bash
-stow -D zsh
+stow zsh tmux ghostty git starship ideavim
 ```
-This removes symlinks from `$HOME` without deleting files in `.dotfiles`.
 
-### Workflow
-1. Edit files **inside `.dotfiles`**
-2. Symlinks update automatically
-3. Reload application or restart
-4. Commit changes to git
+You can stow individual packages as needed.
 
-**Never edit symlinked files in `$HOME` directly.**
+### Remove symlinks (unstow)
+
+```bash
+stow -D tmux
+```
+
+This removes symlinks from `$HOME` **without deleting files** inside `.dotfiles`.
 
 ---
 
-## System Requirements
+## Workflow
 
-**Required:**
-- Linux
-- GNU Stow
-- Zsh
-- Git
-- Tmux
+1. Edit files **inside `.dotfiles`**
+2. Symlinks update automatically
+3. Reload or restart the relevant application
+4. Commit changes to git
 
-**Optional (for full functionality):**
-- Kitty terminal
-- Starship prompt
-- Lazygit (for tmux integration)
+⚠️ **Never edit the symlinked files in `$HOME` directly.**
 
 ---
 
 ## Git Configuration
 
 ### Version-controlled
-- `.gitconfig` (global settings, aliases, includes)
 
-### NOT version-controlled
-- `~/.gitconfig.local` (machine-specific: credentials, signing keys)
-- `~/.git-credentials`
-- SSH keys or tokens
+* `git/.gitconfig`
 
-`.gitconfig` includes `.gitconfig.local` if it exists. Git creates it automatically when needed.
+  * Global Git settings
+  * User identity
+  * Includes for local overrides
 
-### New machine setup
+### NOT version-controlled (by design)
+
+* `~/.gitconfig.local`
+* `~/.git-credentials`
+* SSH keys or tokens
+
+These are **machine-specific and security-sensitive**.
+
+`.gitconfig` includes `.gitconfig.local` if it exists.
+Git works normally even if `.gitconfig.local` is missing.
+
+### New machine setup (Git)
+
 1. Clone this repository
 2. Run `stow git`
-3. Authenticate (SSH key or HTTPS token)
+3. Authenticate once (SSH key or HTTPS token)
 
-Credentials regenerate per machine.
+Credentials are regenerated per machine.
 
 ---
 
 ## Tmux Integration
 
-Tmux configuration includes popup bindings for:
-- **Lazygit** (`Ctrl+a` + `Ctrl+y`) — Git UI
-- **Terminal** (`Ctrl+a` + `Ctrl+t`) — Quick shell
-- **Dotfiles menu** (`Ctrl+a` + `d`) — Edit configs
+Tmux configuration includes:
 
-Lazygit must be installed separately.
+* **Custom prefix** (`Ctrl+a`)
+* Vi-style navigation and copy mode
+* System clipboard integration
+* Popup-based workflows:
+
+  * **Lazygit** (Git TUI)
+  * **Shell popups**
+  * **Dotfiles editor menu**
+
+All popup entries point directly to files inside `~/.dotfiles`, which is the source of truth.
+
+> Lazygit must be installed separately.
+
+---
+
+## Shell (Zsh)
+
+Zsh configuration includes:
+
+* **Starship prompt**
+* **Zoxide** (replaces `cd` with frecency-based navigation)
+* Aliases and PATH management
+* Integration with tools such as:
+
+  * `fd`
+  * `rg`
+  * `lazygit`
+  * `yazi` (if installed)
+
+Some features depend on optional tools being present.
+
+---
+
+## System Assumptions
+
+This setup assumes:
+
+### Required
+
+* Linux
+* GNU Stow
+* Zsh
+* Git
+* Tmux
+
+### Optional (recommended)
+
+* Ghostty (terminal emulator)
+* Starship
+* Lazygit
+* Zoxide
+* fd
+* ripgrep
+* Neovim (for editing via tmux popups)
+
+Missing optional tools do **not** break the setup; related features simply remain inactive.
 
 ---
 
 ## Safety Notes
 
-- Always `cd ~/.dotfiles` before running `stow`
-- Avoid filename conflicts between packages
-- Use `stow -n <package>` for dry runs
+* Always `cd ~/.dotfiles` before running `stow`
+* Avoid filename conflicts between packages
+* Use `stow -n <package>` for dry runs
+* Keep backups temporarily when migrating configs
 
 ---
 
 ## Purpose
 
-This repository is for:
-- Personal system reproducibility
-- Learning Linux configuration
-- Clean separation of concerns
-- Long-term maintainability
+This repository exists for:
 
-**Not intended for public use.** Optimized for my specific workflow.
+* Personal system reproducibility
+* Learning and understanding Linux configuration
+* Clean separation of concerns
+* Long-term maintainability
+
+This is **not a generic dotfiles repository** and is not intended for public reuse.
+
+
