@@ -14,6 +14,15 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 
+# ---------------------------------------
+# LS colors (file / directory distinction)
+# ---------------------------------------
+if command -v dircolors >/dev/null 2>&1; then
+  eval "$(dircolors)"
+fi
+
+alias ls='ls --color=auto'
+
 # ------------------------
 # Starship Prompt Init
 # ------------------------
