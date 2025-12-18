@@ -90,25 +90,77 @@ adjust-cell-height = 0
 adjust-cell-width = 0
 auto-update = off
 
-
 # ============================
 # Shaders (disabled for now)
 # ============================
 # NOTE:
 # Ubuntu Ghostty builds currently do NOT support shaders.
 # Keep these commented until shader support lands on Linux.
+#
+# RULES:
+# - Uncomment ONLY ONE `shader =` line at a time
+# - Restart Ghostty or press Ctrl+Shift+, after changes
+# - These paths are relative to ~/.config/ghostty/
 
-# --- Cursor shaders ---
+# --------------------------------------------------
+# Cursor shaders
+# --------------------------------------------------
 # shader = shaders/cursor/cursor_smear.glsl
 # shader = shaders/cursor/cursor_smear_fade.glsl
 # shader = shaders/cursor/cursor_smear_gradient.glsl
+# shader = shaders/cursor/cursor_smear_rainbow.glsl
 # shader = shaders/cursor/cursor_blaze.glsl
+# shader = shaders/cursor/cursor_blaze_no_trail.glsl
+# shader = shaders/cursor/cursor_blaze_tapered.glsl
+# shader = shaders/cursor/cursor_frozen.glsl
+# shader = shaders/cursor/debug_cursor_static.glsl
+# shader = shaders/cursor/debug_cursor_animated.glsl
 
-# --- Background shaders ---
+# --------------------------------------------------
+# Background / full-screen shaders
+# --------------------------------------------------
 # shader = shaders/background/crt.glsl
+# shader = shaders/background/bettercrt.glsl
 # shader = shaders/background/retro-terminal.glsl
+# shader = shaders/background/in-game-crt.glsl
+# shader = shaders/background/tft.glsl
+# shader = shaders/background/negative.glsl
+# shader = shaders/background/dither.glsl
+# shader = shaders/background/glitchy.glsl
+# shader = shaders/background/gradient-background.glsl
+# shader = shaders/background/underwater.glsl
+# shader = shaders/background/water.glsl
 # shader = shaders/background/starfield.glsl
+# shader = shaders/background/starfield-colors.glsl
+# shader = shaders/background/galaxy.glsl
+# shader = shaders/background/matrix-hallway.glsl
+# shader = shaders/background/inside-the-matrix.glsl
+# shader = shaders/background/smoke-and-ghost.glsl
+# shader = shaders/background/spotlight.glsl
 
-# --- Experimental ---
+# --------------------------------------------------
+# Experimental / FX shaders (not for daily use)
+# --------------------------------------------------
+# shader = shaders/fx/animated-gradient-shader.glsl
+# shader = shaders/fx/blaze_sparks.glsl
+# shader = shaders/fx/bloom.glsl
+# shader = shaders/fx/cg-lunar-tears.glsl
+# shader = shaders/fx/cg-shader-laser-no-spark.glsl
+# shader = shaders/fx/cg-shader-original.glsl
+# shader = shaders/fx/cg-solar-flare.glsl
+# shader = shaders/fx/cineShader-Lava.glsl
+# shader = shaders/fx/cubes.glsl
+# shader = shaders/fx/drunkard.glsl
 # shader = shaders/fx/fireworks.glsl
+# shader = shaders/fx/fireworks-rockets.glsl
+# shader = shaders/fx/gears-and-belts.glsl
+# shader = shaders/fx/glow-rgbsplit-twitchy.glsl
+# shader = shaders/fx/just-snow.glsl
+# shader = shaders/fx/manga_slash.glsl
+# shader = shaders/fx/mnoise.glsl
+# shader = shaders/fx/sin-interference.glsl
+# shader = shaders/fx/sparks.glsl
+# shader = shaders/fx/sparks-from-fire.glsl
+# shader = shaders/fx/test.glsl
+# shader = shaders/fx/WIP.glsl
 
