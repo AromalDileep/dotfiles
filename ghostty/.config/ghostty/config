@@ -89,3 +89,26 @@ keybind = ctrl+shift+t=new_tab
 adjust-cell-height = 0
 adjust-cell-width = 0
 auto-update = off
+
+
+# ============================
+# Shaders (disabled for now)
+# ============================
+# NOTE:
+# Ubuntu Ghostty builds currently do NOT support shaders.
+# Keep these commented until shader support lands on Linux.
+
+# --- Cursor shaders ---
+# shader = shaders/cursor/cursor_smear.glsl
+# shader = shaders/cursor/cursor_smear_fade.glsl
+# shader = shaders/cursor/cursor_smear_gradient.glsl
+# shader = shaders/cursor/cursor_blaze.glsl
+
+# --- Background shaders ---
+# shader = shaders/background/crt.glsl
+# shader = shaders/background/retro-terminal.glsl
+# shader = shaders/background/starfield.glsl
+
+# --- Experimental ---
+# shader = shaders/fx/fireworks.glsl
+
