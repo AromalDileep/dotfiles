@@ -2,42 +2,14 @@
 # Optimized for tmux usage with Catppuccin theme
 
 # -------------------------
-# Theme - Catppuccin Mocha (Enhanced - Brighter & More Aesthetic)
+# Theme
 # -------------------------
-# Using inline color definitions since theme file doesn't exist
-background = #24273a
-foreground = #cdd6f4
-
-# Cursor colors
-cursor-color = #f5e0dc
-cursor-text = #24273a
-
-# Selection colors
-selection-background = #5b6078
-selection-foreground = #cdd6f4
-
-# Catppuccin Mocha palette (Enhanced)
-palette = 0=#494d64
-palette = 1=#f38ba8
-palette = 2=#a6e3a1
-palette = 3=#f9e2af
-palette = 4=#89dceb
-palette = 5=#f5c2e7
-palette = 6=#94e2d5
-palette = 7=#cad3f5
-palette = 8=#5b6078
-palette = 9=#f38ba8
-palette = 10=#a6e3a1
-palette = 11=#f9e2af
-palette = 12=#89dceb
-palette = 13=#f5c2e7
-palette = 14=#94e2d5
-palette = 15=#b8c0e0
+theme = Catppuccin Macchiato
 
 # -------------------------
 # Font
 # -------------------------
-font-family = FiraCode Nerd Font
+font-family = JetBrainsMono Nerd Font Mono
 font-size = 11.5
 
 # Enable font features (ligatures for FiraCode)
@@ -96,7 +68,7 @@ resize-overlay = never
 unfocused-split-opacity = 0.9
 
 # -------------------------
-# Keybindings (Fixed)
+# Keybindings
 # -------------------------
 # Copy/paste that works well with tmux
 keybind = ctrl+shift+c=copy_to_clipboard
