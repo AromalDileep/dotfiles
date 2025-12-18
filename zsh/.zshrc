@@ -50,8 +50,6 @@ bindkey "^[OB" history-beginning-search-forward    # Alt Down compatibility
 # Default editor
 export EDITOR="nvim"
 export VISUAL="nvim"
-
-
 # ------------------------------------------
 # Conda Initialization (automatically managed)
 # ------------------------------------------
