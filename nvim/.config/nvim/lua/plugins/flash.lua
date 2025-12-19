@@ -9,7 +9,7 @@ return {
       },
       -- OPERATOR MODE (this is what you want)
       char = {
-        enabled = true,
+        enabled = false,
       },
     },
     -- CUSTOMIZE COLORS HERE
