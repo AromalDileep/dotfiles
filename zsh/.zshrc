@@ -80,6 +80,19 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# ------------------------------------------
+# Auto-update tmux environment on conda activate/deactivate
+# ------------------------------------------
+if [ -n "$TMUX" ]; then
+  _tmux_conda_hook() {
+    tmux set-environment CONDA_DEFAULT_ENV "${CONDA_DEFAULT_ENV:-}"
+  }
+  
+  precmd_functions+=(_tmux_conda_hook)
+fi
+
+
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # yazi wrapper: sync shell cwd with yazi on exit
