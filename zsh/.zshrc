@@ -82,14 +82,15 @@ unset __conda_setup
 
 
 # ------------------------------------------
-# Auto-update tmux environment on conda activate/deactivate
+# Auto-update tmux environment on env or conda activate/deactivate
 # ------------------------------------------
 if [ -n "$TMUX" ]; then
-  _tmux_conda_hook() {
+  _tmux_env_hook() {
     tmux set-environment CONDA_DEFAULT_ENV "${CONDA_DEFAULT_ENV:-}"
+    tmux set-environment VIRTUAL_ENV "${VIRTUAL_ENV:-}"
   }
   
-  precmd_functions+=(_tmux_conda_hook)
+  precmd_functions+=(_tmux_env_hook)
 fi
 
 
