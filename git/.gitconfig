@@ -1,9 +1,19 @@
-[init]
-    defaultBranch = main
-
 [user]
     name = Aromal Dileep
     email = aromaldileep96@gmail.com
 
-[include]
-    path = ~/.gitconfig.local
+[init]
+    defaultBranch = main
+
+[core]
+    editor = nvim
+
+[pull]
+    rebase = false
+
+[fetch]
+    prune = true
+
+[color]
+    ui = auto
+
