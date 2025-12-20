@@ -94,7 +94,7 @@ if [ -n "$TMUX" ]; then
 fi
 
 
-[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 
 # yazi wrapper: sync shell cwd with yazi on exit
 y() {
@@ -115,9 +115,13 @@ y() {
 eval "$(zoxide init --cmd cd zsh)"
 
 # Created by `pipx` on 2025-12-18 05:34:32
-export PATH="$PATH:/home/aromal/.local/bin"
+[ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
 
+# nvm (Node Version Manager)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+fi
+
 export PATH="$HOME/.cargo/bin:$PATH"
