@@ -12,63 +12,60 @@ This is **not** a generic dotfiles repository and is **not intended for public r
 
 ---
 
-## Tmux Integration
+## Tmux
 
-The Tmux configuration is designed as a **central control layer** for development workflows.
+Tmux acts as the **central control layer** for terminal-based workflows.
 
 ### Features
 
-- Custom prefix: `Ctrl+a`
+- Prefix: `Ctrl+a`
 - Vi-style navigation and copy mode
 - System clipboard integration
-- Popup-based workflows, including:
+- Popup workflows:
   - Lazygit (Git TUI)
   - Shell popups
   - Dotfiles editor menu
 
-All popup entries reference files directly inside `~/.dotfiles`, which is treated as the **single source of truth**.  
-No generated state or transient files are edited through these menus.
+All popups reference files directly inside `~/.dotfiles`, which is treated as the **single source of truth**.  
+No generated or transient state is edited via tmux.
 
-> **Note**: `lazygit` must be installed separately for Git popups to work.
+> **Note**: `lazygit` must be installed separately for Git popups.
 
 ---
 
 ## Shell (Zsh)
 
-The Zsh configuration provides a **minimal but powerful interactive shell**, optimized for terminal-first workflows.
+Zsh provides a **minimal, terminal-first shell environment**.
 
-### Features
+### Included
 
 - Starship prompt
-- Zoxide (frecency-based directory navigation, replacing traditional `cd`)
+- Zoxide (frecency-based directory navigation)
 - Aliases and PATH management
-- Integration with commonly used CLI tools:
+- Optional integrations:
   - `fd`
   - `ripgrep (rg)`
   - `lazygit`
-  - `yazi` (if installed)
+  - `yazi`
 
-All integrations are **optional**.  
-If a tool is not installed, related aliases or features remain inactive **without causing errors**.
+If a tool is not installed, related integrations remain inactive **without errors**.
 
 ---
 
 ## Neovim (AstroNvim)
 
-Neovim is managed using **AstroNvim**, with configuration stored and versioned via GNU Stow.
+Neovim is managed via **AstroNvim**, with configuration stored declaratively using GNU Stow.
 
-### Key characteristics
+### Characteristics
 
-- AstroNvim template-based configuration
+- AstroNvim template-based setup
 - Plugin management via `lazy.nvim`
 - Explicit plugin specs under `lua/plugins/`
-- `flash.nvim` installed and configured for fast navigation
-- Treesitter, LSP, formatting, and UI configuration split cleanly by concern
+- `flash.nvim` for fast navigation
+- Clean separation of LSP, UI, formatting, and Treesitter
 - `lazy-lock.json` tracked for reproducibility
 
-### What is tracked
-
-Only the following directory is stowed and tracked:
+### Tracked
 
 ```
 
@@ -76,7 +73,7 @@ Only the following directory is stowed and tracked:
 
 ```
 
-### What is explicitly excluded
+### Explicitly excluded
 
 ```
 
@@ -86,73 +83,86 @@ Only the following directory is stowed and tracked:
 
 ```
 
-This ensures:
+This guarantees:
 - Safe upgrades
 - No machine-specific state in Git
 - Clean restores on new systems
 
 ---
 
-## Terminal Emulator (Ghostty)
+## Terminal Emulators
 
-The primary terminal emulator is **Ghostty**.
+### Ghostty (Primary)
 
-### Reasons for choosing Ghostty
+Ghostty is the primary terminal emulator.
 
-- Correct input handling for terminal applications (notably Neovim)
+**Why Ghostty**
+- Correct input handling (notably Neovim)
 - Wayland-friendly
-- Simple, explicit configuration
+- Simple, predictable behavior
 - No known key duplication issues
 
-### Configuration
-
-Ghostty is configured via:
-
+**Config**
 ```
 
 ~/.config/ghostty/config
 
 ```
 
-The configuration includes:
-- Catppuccin theme
-- Font and padding settings
-- Minimal, predictable behavior
-
-Ghostty is installed via a **community-maintained Ubuntu package**.  
-Updates are performed by re-running the installer script.
+Installed via a community-maintained Ubuntu package.  
+Updates are done by re-running the installer.
 
 ---
 
-## Git Configuration (Canonical Setup)
+### Kitty (Optional)
 
-Git is treated as **declarative configuration**, fully managed via dotfiles and **SSH-only authentication**.
+Kitty is supported as an **alternative terminal emulator**.
 
-### Design principles
+**Design**
+- Configuration is fully managed via dotfiles
+- Safe to stow even if Kitty is not installed
+- No runtime impact unless Kitty is launched
+
+**Config**
+```
+
+~/.config/kitty
+
+```
+
+Kitty is optional and does not affect:
+- tmux
+- Zsh
+- Git
+- Ghostty
+- Neovim
+
+---
+
+## Git (Canonical Setup)
+
+Git is managed **declaratively** and uses **SSH-only authentication**.
+
+### Principles
 
 - No HTTPS authentication
 - No credential helpers
 - No machine-local includes
 - No hidden state
-- SSH is handled entirely via `~/.ssh`, not Git config
+- SSH handled exclusively via `~/.ssh`
 
 This ensures:
-- Reproducibility across machines
+- Reproducibility
 - Clean security boundaries
-- Zero password or token prompts
-- Compatibility with tmux popups and `lazygit`
+- Compatibility with tmux and `lazygit`
 
-### Tracked Git config
-
-The following file is stowed:
+### Tracked config
 
 ```
 
 ~/.gitconfig → ~/.dotfiles/git/.gitconfig
 
 ````
-
-Contents:
 
 ```ini
 [user]
@@ -175,79 +185,50 @@ Contents:
     ui = auto
 ````
 
-### Important note on previous Git setup
+### Legacy Git setup (removed)
 
-Older setups used:
+Previous setups using:
 
 * HTTPS authentication
 * `credential.helper=store`
-* `~/.gitconfig.local` includes
+* `~/.gitconfig.local`
 
-These have been **intentionally removed**.
-
-They are:
-
-* Not reproducible
-* Machine-specific
-* Incompatible with SSH-only workflows
-
-This repository **does not support** that model anymore.
+are **intentionally unsupported**.
 
 ---
 
 ## Git Setup on a New Machine
 
-Follow these steps **in order**.
-
-### 1. Install Git and SSH
+1. Install Git + SSH
 
 ```bash
 sudo apt install git openssh-client   # Ubuntu
 sudo dnf install git openssh-clients  # Fedora
 ```
 
----
-
-### 2. Generate an SSH key
+2. Generate SSH key
 
 ```bash
 ssh-keygen -t ed25519 -C "your@email.com"
 ```
 
-Add the public key to GitHub:
-
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
-
-Verify:
+3. Add key to GitHub and verify
 
 ```bash
 ssh -T git@github.com
 ```
 
----
-
-### 3. Clone dotfiles
+4. Clone dotfiles
 
 ```bash
 git clone git@github.com:AromalDileep/dotfiles.git ~/.dotfiles
 ```
 
----
-
-### 4. Apply Git config
-
-If a Git config already exists:
+5. Apply Git config
 
 ```bash
 mv ~/.gitconfig ~/.gitconfig.bak
 mv ~/.gitconfig.local ~/.gitconfig.local.bak  # if present
-```
-
-Then stow Git:
-
-```bash
 cd ~/.dotfiles
 stow git
 ```
@@ -258,18 +239,17 @@ Verify:
 git config --list --show-origin
 ```
 
-You should see **only** entries from `~/.gitconfig` and no credential helpers.
-
 ---
 
-## GNU Stow Usage
+## GNU Stow
 
-GNU Stow is used to manage **only declarative configuration**, never generated state.
+Stow is used for **declarative configuration only**.
 
-### Stowed packages
+### Managed packages
 
 * `nvim`
 * `ghostty`
+* `kitty`
 * `zsh`
 * `tmux`
 * `starship`
@@ -278,10 +258,9 @@ GNU Stow is used to manage **only declarative configuration**, never generated s
 
 ### Rules
 
-* Always `cd ~/.dotfiles` before running stow
+* Always `cd ~/.dotfiles` before stowing
 * Use `stow -n <package>` for dry runs
-* Avoid filename collisions across packages
-* Do not stow cache, state, or runtime directories
+* Never stow cache, runtime, or generated state
 
 ---
 
@@ -295,9 +274,10 @@ GNU Stow is used to manage **only declarative configuration**, never generated s
 * Git
 * Tmux
 
-### Optional (recommended)
+### Optional
 
-* Ghostty (terminal emulator)
+* Ghostty
+* Kitty
 * Starship
 * Lazygit
 * Zoxide
@@ -306,15 +286,14 @@ GNU Stow is used to manage **only declarative configuration**, never generated s
 * Neovim
 
 Missing optional tools do **not** break the system.
-Related features simply remain inactive.
 
 ---
 
 ## Safety Notes
 
-* Always verify changes before committing
-* Keep temporary backups when migrating configurations
-* Avoid tracking machine-specific or auto-generated files
+* Verify changes before committing
+* Keep temporary backups during migrations
+* Avoid tracking machine-specific artifacts
 * Prefer explicit configuration over implicit defaults
 
 ---
@@ -324,8 +303,10 @@ Related features simply remain inactive.
 This repository exists to support:
 
 * Personal system reproducibility
-* Learning and understanding Linux configuration deeply
+* Deep understanding of Linux configuration
 * Clean separation of concerns
-* Long-term maintainability and stability
-
-
+* Long-term stability and maintainability
+ist**
+* Add a **design rationale section**
+* Help you decide **Kitty vs Ghostty long-term**
+* Add a **quick audit checklist** for future changes
