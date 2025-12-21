@@ -739,7 +739,7 @@ mouse_hide_wait -5.0
 #: clicks (in seconds). Negative numbers will use the system default
 #: instead, if available, or fallback to 0.5.
 
-focus_follows_mouse yes
+# focus_follows_mouse no
 
 #: Set the active window to the window under the mouse when moving the
 #: mouse around. On macOS, this will also cause the OS Window under
@@ -1450,7 +1450,7 @@ tab_powerline_style round
 
 #: The foreground and background colors.
 
-# background_opacity 0.80
+background_opacity 0.85
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1517,7 +1517,7 @@ tab_powerline_style round
 #: decrease_background_opacity) or the remote control facility.
 #: Changing this option by reloading the config is not supported.
 
-# background_image /home/aromal/Pictures/Wallpapers/cabin.png
+background_image /home/aromal/Pictures/Wallpapers/cabin.png
 
 #: Path to a background image. Must be in PNG/JPEG/WEBP/TIFF/GIF/BMP
 #: format. Note that when using auto_color_scheme
@@ -1525,7 +1525,7 @@ tab_powerline_style round
 #: this option is overridden by the color scheme file and must be set
 #: inside it to take effect.
 
-# background_image_layout scaled
+background_image_layout scaled
 
 #: Whether to tile, scale or clamp the background image. The value can
 #: be one of tiled, mirror-tiled, scaled, clamped, centered or
