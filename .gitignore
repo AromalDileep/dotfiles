@@ -1,1 +1,16 @@
-niri/.config/niri/dms/
+# Editor / backup files
+*.save
+
+# Neovim generated files
+nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/.neoconf.json
+
+# Runtime / cache (prevent future accidents)
+.cache/
+.state/
+.local/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
