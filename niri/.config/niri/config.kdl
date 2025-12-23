@@ -167,8 +167,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#00b4ff"
-
+        active-color "#9ca3af"
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
