@@ -125,3 +125,6 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
 fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Reduce TensorFlow C++ startup logs (hide INFO/WARNING; show only errors)
+export TF_CPP_MIN_LOG_LEVEL=2
