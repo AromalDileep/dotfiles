@@ -128,3 +128,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # Reduce TensorFlow C++ startup logs (hide INFO/WARNING; show only errors)
 export TF_CPP_MIN_LOG_LEVEL=2
+
+# Disable bat pager so output prints directly like cat (no less/paging)
+export BAT_PAGER=cat
+
