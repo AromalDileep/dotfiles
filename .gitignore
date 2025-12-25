@@ -14,3 +14,9 @@ nvim/.config/nvim/.neoconf.json
 .DS_Store
 Thumbs.db
 
+# Auto-generated theme/color files (change on wallpaper switch)
+ghostty/.config/ghostty/config-dankcolors
+kitty/.config/kitty/dank-tabs.conf
+kitty/.config/kitty/dank-theme.conf
+niri/.config/niri/dms/colors.kdl
+
