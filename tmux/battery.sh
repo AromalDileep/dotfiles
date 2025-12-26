@@ -16,6 +16,12 @@ if [ "$status" = "Charging" ]; then
     exit 0
 fi
 
+# Set color based on percentage (only for discharging)
+if   [ "$capacity" -le 10 ]; then color="\033[0;31m"    # red
+elif [ "$capacity" -le 25 ]; then color="\033[0;33m"    # orange/yellow
+else                              color=""              # default/no color
+fi
+
 # Discharging → select icon based on percentage
 if   [ "$capacity" -ge 100 ]; then icon="󰁹"
 elif [ "$capacity" -ge 90  ]; then icon="󰂂"
@@ -29,4 +35,5 @@ elif [ "$capacity" -ge 20  ]; then icon="󰁻"
 else                               icon="󰁺"    # < 20%
 fi
 
-echo "${icon}${capacity}%"
+# Output with color (resets at end)
+echo -e "${color}${icon}${capacity}%${color:+\033[0m}"
