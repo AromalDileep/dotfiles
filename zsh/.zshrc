@@ -114,8 +114,8 @@ y() {
 # - Overrides `cd` instead of introducing `z`
 eval "$(zoxide init --cmd cd zsh)"
 
-# Created by `pipx` on 2025-12-18 05:34:32
-[ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
+# Created by `pipx` on 2025-12-18 05:34:32 (Kitty priority)
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
 # nvm (Node Version Manager)
 export NVM_DIR="$HOME/.nvm"
