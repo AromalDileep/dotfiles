@@ -31,9 +31,11 @@ confirm-close-surface = true
 window-theme = auto
 window-colorspace = srgb
 
-# #Transparent background
-# background-opacity = 0.85
-# background-blur = 5
+# Transparent background
+# background = 000000 # sets transparent background to black
+background-opacity = 0.92
+background-blur = true
+
 #
 # -------------------------
 # Cursor
