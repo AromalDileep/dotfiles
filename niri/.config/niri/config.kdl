@@ -381,7 +381,7 @@ window-rule {
 // VS Code: glass transparency (text stays crisp)
 window-rule {
     match app-id="code"
-    opacity 0.98 // 0.0=full transparent, 1.0=opaque
+    opacity 0.97 // 0.0=full transparent, 1.0=opaque
 }
 
 binds {
