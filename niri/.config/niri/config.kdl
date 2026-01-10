@@ -159,7 +159,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 1.5
+        width 1.2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -167,7 +167,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#9ca3af"
+        active-color "#cba6f7"
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
