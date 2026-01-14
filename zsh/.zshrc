@@ -132,3 +132,5 @@ export TF_CPP_MIN_LOG_LEVEL=2
 # Disable bat pager so output prints directly like cat (no less/paging)
 export BAT_PAGER=cat
 
+# Add OpenCode CLI (installed in ~/.opencode/bin) to PATH
+export PATH="$HOME/.opencode/bin:$PATH"
