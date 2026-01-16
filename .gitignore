@@ -24,3 +24,7 @@ niri/.config/niri/dms/colors.kdl
 wezterm/.config/wezterm/colors/*.toml
 
 fuzzel/.config/fuzzel/fuzzel_theme.ini
+
+# Niri dynamic module state (runtime, auto-generated)
+niri/.config/niri/dms/
+
