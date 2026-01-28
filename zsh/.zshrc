@@ -34,18 +34,6 @@ eval "$(starship init zsh)"
 # Disable autosuggestions
 # source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Zsh syntax highlighting (cross-distro)
-for _zsh_sh in \
-  /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-  /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-do
-  if [[ -f "$_zsh_sh" ]]; then
-    source "$_zsh_sh"
-    break
-  fi
-done
-unset _zsh_sh
-
 # Vi mode everywhere
 bindkey -v 
 
@@ -134,3 +122,16 @@ export BAT_PAGER=cat
 
 # Add OpenCode CLI (installed in ~/.opencode/bin) to PATH
 export PATH="$HOME/.opencode/bin:$PATH"
+
+# Zsh syntax highlighting (cross-distro)
+for _zsh_sh in \
+  /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+  /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+do
+  if [[ -f "$_zsh_sh" ]]; then
+    source "$_zsh_sh"
+    break
+  fi
+done
+unset _zsh_sh
+
