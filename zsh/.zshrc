@@ -135,3 +135,4 @@ do
 done
 unset _zsh_sh
 
+figlet -f slant -c "Aromal" | lolcat && figlet -f digital -c "Welcome Dev" | lolcat
