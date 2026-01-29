@@ -273,6 +273,9 @@ window-rule {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
 
+// Force Ulauncher to run in Wayland mode to fix copy-paste issues
+spawn-at-startup "env" "GDK_BACKEND=wayland" "ulauncher" "--hide-window"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -383,12 +386,12 @@ window-rule {
     match app-id="code"
     opacity 0.97 // 0.0=full transparent, 1.0=opaque
 }
-// Ulanucher focus ring turned off
+// Disable focus ring and borders for Ulauncher
 window-rule {
-    match app-id="Ulauncher"
-    focus-ring {
-        off
-    }
+    match app-id="ulauncher"
+    focus-ring { off; }
+    border { off; }
+    shadow { off; }
 }
 
 binds {
