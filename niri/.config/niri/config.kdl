@@ -383,6 +383,13 @@ window-rule {
     match app-id="code"
     opacity 0.97 // 0.0=full transparent, 1.0=opaque
 }
+// Ulanucher focus ring turned off
+window-rule {
+    match app-id="Ulauncher"
+    focus-ring {
+        off
+    }
+}
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
