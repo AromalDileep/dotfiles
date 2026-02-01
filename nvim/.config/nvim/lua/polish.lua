@@ -1,70 +1,54 @@
--- This will run last in the setup process.
--- This is just pure lua so anything that doesn't
--- fit in the normal config locations above can go here
+-- This runs LAST in AstroNvim startup
+-- Used to enforce transparency after all plugins & colorschemes
 
--- Make background transparent
+local transparent_groups = {
+  "Normal",
+  "NormalNC",
+  "NormalFloat",
+  "SignColumn",
+  "LineNr",
+  "CursorLineNr",
+  "CursorLine",
+  "FoldColumn",
+  "EndOfBuffer",
+  "VertSplit",
+  "WinSeparator",
+  "StatusLine",
+  "StatusLineNC",
+  "TabLine",
+  "TabLineFill",
+  "TabLineSel",
+  "WinBar",
+  "WinBarNC",
+
+  -- NeoTree
+  "NeoTreeNormal",
+  "NeoTreeNormalNC",
+  "NeoTreeEndOfBuffer",
+  "NeoTreeTabInactive",
+  "NeoTreeTabActive",
+  "NeoTreeTabSeparatorInactive",
+  "NeoTreeTabSeparatorActive",
+  "NeoTreeWinSeparator",
+  "NeoTreeVertSplit",
+  "NeoTreeStatusLine",
+  "NeoTreeStatusLineNC",
+
+  -- Telescope
+  "TelescopeNormal",
+  "TelescopeBorder",
+}
+
+local function make_transparent()
+  for _, group in ipairs(transparent_groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "NONE" })
+  end
+end
+
+-- Apply on every colorscheme change (CRITICAL)
 vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-    vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeTabInactive", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeTabActive", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeTabSeparatorInactive", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeTabSeparatorActive", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeVertSplit", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeStatusLine", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NeoTreeStatusLineNC", { bg = "none" })
-    vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
-    vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-    vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-    vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
-    vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
-    vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
-    vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
-    vim.api.nvim_set_hl(0, "TabLine", { bg = "none" })
-    vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
-    vim.api.nvim_set_hl(0, "TabLineSel", { bg = "none" })
-    vim.api.nvim_set_hl(0, "WinBar", { bg = "none" })
-    vim.api.nvim_set_hl(0, "WinBarNC", { bg = "none" })
-  end,
+  callback = make_transparent,
 })
 
--- Apply immediately for current colorscheme
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeTabInactive", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeTabActive", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeTabSeparatorInactive", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeTabSeparatorActive", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeVertSplit", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeStatusLine", { bg = "none" })
-vim.api.nvim_set_hl(0, "NeoTreeStatusLineNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
-vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
-vim.api.nvim_set_hl(0, "TabLine", { bg = "none" })
-vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
-vim.api.nvim_set_hl(0, "TabLineSel", { bg = "none" })
-vim.api.nvim_set_hl(0, "WinBar", { bg = "none" })
-vim.api.nvim_set_hl(0, "WinBarNC", { bg = "none" })
+-- Apply once on startup
+make_transparent()
