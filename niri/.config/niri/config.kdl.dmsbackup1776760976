@@ -675,4 +675,3 @@ binds {
 }
 
 include "dms/cursor.kdl"
-include "dms/binds.kdl"
