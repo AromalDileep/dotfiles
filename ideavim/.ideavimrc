@@ -19,3 +19,5 @@ xmap ; <Action>(flash.repeat)
 
 nmap , <Action>(flash.repeat_backward)
 xmap , <Action>(flash.repeat_backward)
+
+sethandler <S-Enter> a:ide
