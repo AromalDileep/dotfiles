@@ -382,10 +382,10 @@ window-rule {
     open-floating true
 }
 // VS Code: glass transparency (text stays crisp)
-window-rule {
-    match app-id="code"
-    opacity 0.97 // 0.0=full transparent, 1.0=opaque
-}
+// window-rule {
+//     match app-id="code"
+//     opacity 0.97 // 0.0=full transparent, 1.0=opaque
+// }
 // Disable focus ring and borders for Ulauncher
 window-rule {
     match app-id="ulauncher"

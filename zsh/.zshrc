@@ -136,3 +136,7 @@ done
 unset _zsh_sh
 
 figlet -f smslant "System Ready" | lolcat
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/aromal/.local/bin:$PATH"
