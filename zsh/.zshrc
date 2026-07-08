@@ -140,3 +140,4 @@ figlet -f smslant "System Ready" | lolcat
 
 # Added by Antigravity CLI installer
 export PATH="/home/aromal/.local/bin:$PATH"
+export PATH="/opt/sonar-scanner/bin:$PATH"
