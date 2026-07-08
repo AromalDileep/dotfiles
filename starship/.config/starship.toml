@@ -72,9 +72,9 @@ renamed = "»"
 deleted = "✘"
 conflicted = "!"
 stashed = "≡"
-ahead = "⇡"
-behind = "⇣"
-diverged = "⇕"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 
 # ------------------------
 # Command Duration
