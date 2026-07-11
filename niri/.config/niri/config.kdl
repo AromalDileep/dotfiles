@@ -414,6 +414,7 @@ window-rule {
 // Disable focus ring and borders for Ulauncher
 window-rule {
     match app-id="ulauncher"
+    open-floating true
     focus-ring { off; }
     border { off; }
     shadow { off; }
