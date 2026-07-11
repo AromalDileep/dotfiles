@@ -414,10 +414,8 @@ binds {
     // Mod+space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     // above is the code for mod + space for fuzzel below is the backup mod + shift + space for fuzzel
     Mod+Shift+space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; } 
-    // DMS built-in Spotlight and Notepad
     // below is the code that I added for using ulauncher as default app drawer
     Mod+space hotkey-overlay-title="Run an Application: Ulauncher" { spawn "ulauncher-toggle"; }
-    Mod+N hotkey-overlay-title="Open Notepad: DMS Notepad" { spawn-sh "dms ipc call notepad toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
