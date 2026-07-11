@@ -381,6 +381,14 @@ window-rule {
     }
 }
 
+// Enable beautiful background blur for Kitty terminal
+window-rule {
+    match app-id=r#"^kitty$"#
+    background-effect {
+        blur true
+    }
+}
+
 // Open GNOME Clocks as floating
 window-rule {
     match app-id=r#"^org\.gnome\.clocks$"#
