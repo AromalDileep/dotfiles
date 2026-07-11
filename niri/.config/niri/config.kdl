@@ -310,6 +310,14 @@ animations {
     // slowdown 3.0
 }
 
+// Global blur settings for a high-quality, aesthetic background blur
+blur {
+    passes 3          // Higher passes = smoother blur (3 is a great balance)
+    offset 3.0        // Spread of the blur
+    noise 0.02        // Slight grain to prevent color banding
+    saturation 1.25   // Boost colors slightly through the blur for a vibrant look
+}
+
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
@@ -362,6 +370,15 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.gnome\.Calculator$"#
     open-floating true
+}
+
+// Enable beautiful background blur for Ghostty terminal
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+    match app-id=r#"^ghostty$"#
+    background-effect {
+        blur true
+    }
 }
 
 // Open GNOME Clocks as floating
