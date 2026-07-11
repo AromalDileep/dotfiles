@@ -135,7 +135,7 @@ do
 done
 unset _zsh_sh
 
-figlet -f smslant "System Ready" | lolcat
+# figlet -f smslant "System Ready" | lolcat
 
 
 # Added by Antigravity CLI installer
