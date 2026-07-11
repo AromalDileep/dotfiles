@@ -47,9 +47,10 @@ bindkey "^[OA" history-beginning-search-backward   # Alt Up compatibility
 bindkey "^[[B" history-beginning-search-forward    # Down arrow
 bindkey "^[OB" history-beginning-search-forward    # Alt Down compatibility
 
-# Default editor
+# Default applications
 export EDITOR="nvim"
 export VISUAL="nvim"
+export TERMINAL="ghostty"
 # ------------------------------------------
 # Conda Initialization (Lazy Loaded)
 # ------------------------------------------
