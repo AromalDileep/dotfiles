@@ -51,22 +51,26 @@ bindkey "^[OB" history-beginning-search-forward    # Alt Down compatibility
 export EDITOR="nvim"
 export VISUAL="nvim"
 # ------------------------------------------
-# Conda Initialization (automatically managed)
+# Conda Initialization (Lazy Loaded)
 # ------------------------------------------
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/aromal/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/aromal/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/aromal/anaconda3/etc/profile.d/conda.sh"
+conda() {
+    unset -f conda
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/aromal/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/home/aromal/anaconda3/bin:$PATH"
+        if [ -f "/home/aromal/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/aromal/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/aromal/anaconda3/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+    unset __conda_setup
+    # <<< conda initialize <<<
+    conda "$@"
+}
 
 
 # ------------------------------------------
@@ -105,12 +109,21 @@ eval "$(zoxide init --cmd cd zsh)"
 # Created by `pipx` on 2025-12-18 05:34:32 (Kitty priority)
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
-# nvm (Node Version Manager)
+# nvm (Node Version Manager - Lazy Loaded)
 export NVM_DIR="$HOME/.nvm"
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-  . "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-fi
+_lazy_load_nvm() {
+  unset -f nvm node npm npx yarn pnpm _lazy_load_nvm
+  if [ -s "$NVM_DIR/nvm.sh" ]; then
+    . "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  fi
+}
+nvm() { _lazy_load_nvm; nvm "$@"; }
+node() { _lazy_load_nvm; node "$@"; }
+npm() { _lazy_load_nvm; npm "$@"; }
+npx() { _lazy_load_nvm; npx "$@"; }
+yarn() { _lazy_load_nvm; yarn "$@"; }
+pnpm() { _lazy_load_nvm; pnpm "$@"; }
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
