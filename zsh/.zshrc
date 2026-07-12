@@ -24,6 +24,13 @@ fi
 alias ls='ls --color=auto'
 
 # ------------------------
+# Ghostty Shell Integration (needed inside tmux)
+# ------------------------
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
+fi
+
+# ------------------------
 # Starship Prompt Init
 # ------------------------
 eval "$(starship init zsh)"
