@@ -9,19 +9,6 @@ return {
     -- Set Catppuccin Macchiato as the colorscheme
     colorscheme = "catppuccin-macchiato",
 
-    -- Highlight overrides to fix transparency issues
-    highlights = {
-      init = {
-        Normal = { bg = "NONE" },
-        NormalNC = { bg = "NONE" },
-        SignColumn = { bg = "NONE" },
-        LineNr = { bg = "NONE" },
-        CursorLineNr = { bg = "NONE" },
-        FoldColumn = { bg = "NONE" },
-        EndOfBuffer = { bg = "NONE" },
-      },
-    },
-
     -- Icons used throughout the UI
     icons = {
       LSPLoading1 = "⠋",
