@@ -10,5 +10,7 @@ return {
 
   -- Colorscheme: Catppuccin
   { import = "astrocommunity.colorscheme.catppuccin" },
-}
 
+  -- Markdown rendering
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
+}
