@@ -110,6 +110,10 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
+    // Make workspaces transparent so the backdrop wallpaper shows through
+    // instead of being covered by a solid black color.
+    background-color "transparent"
+
     // Set gaps around windows in logical pixels.
     gaps 1
 
@@ -700,6 +704,11 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
 }
 
 include "dms/cursor.kdl"
