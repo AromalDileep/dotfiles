@@ -692,6 +692,17 @@ layer-rule {
     place-within-backdrop true
 }
 
+overview {
+    // Add a soft shadow around the workspace thumbnails in the overview
+    // to separate them from the wallpaper backdrop.
+    workspace-shadow {
+        softness 60
+        spread 15
+        offset x=0 y=10
+        color "#000000A0"
+    }
+}
+
 include "dms/cursor.kdl"
 include "dms/binds.kdl"
 include "dms/outputs.kdl"
