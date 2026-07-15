@@ -218,7 +218,7 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         on
-        draw-behind-window true
+        draw-behind-window false
 
         // Softness controls the shadow blur radius.
         softness 40
