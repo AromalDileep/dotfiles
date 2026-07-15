@@ -3,9 +3,6 @@ return {
     "folke/snacks.nvim",
     opts = {
       dashboard = {
-        formats = {
-          header = { "%s", align = "center", hl = "SnacksDashboardNormal" },
-        },
         preset = {
           header = table.concat({
             "╔═══════════════════════════════════════════════════════╗",
