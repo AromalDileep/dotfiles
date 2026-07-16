@@ -1,0 +1,95 @@
+/*
+* GTK Colors
+* Generated with Matugen
+*/
+
+@media (prefers-color-scheme: light) {
+    @define-color accent_color {{colors.primary.light.hex}};
+    @define-color accent_fg_color {{colors.on_primary.light.hex}};
+    @define-color accent_bg_color {{colors.primary.light.hex}};
+    @define-color window_bg_color {{colors.background.light.hex}};
+    @define-color window_fg_color {{colors.on_background.light.hex}};
+    @define-color headerbar_bg_color {{colors.surface_dim.light.hex}};
+    @define-color headerbar_fg_color {{colors.on_surface.light.hex}};
+    @define-color popover_bg_color {{colors.surface_dim.light.hex}};
+    @define-color popover_fg_color {{colors.on_surface.light.hex}};
+    @define-color view_bg_color {{colors.surface.light.hex}};
+    @define-color view_fg_color {{colors.on_surface.light.hex}};
+    @define-color card_bg_color {{colors.surface.light.hex}};
+    @define-color card_fg_color {{colors.on_surface.light.hex}};
+    @define-color sidebar_bg_color @window_bg_color;
+    @define-color sidebar_fg_color @window_fg_color;
+    @define-color sidebar_border_color @window_bg_color;
+    @define-color sidebar_backdrop_color @window_bg_color;
+}
+
+@media (prefers-color-scheme: dark) {
+    @define-color accent_color {{colors.primary.dark.hex}};
+    @define-color accent_fg_color {{colors.on_primary.dark.hex}};
+    @define-color accent_bg_color {{colors.primary.dark.hex}};
+    @define-color window_bg_color {{colors.background.dark.hex}};
+    @define-color window_fg_color {{colors.on_background.dark.hex}};
+    @define-color headerbar_bg_color {{colors.surface_dim.dark.hex}};
+    @define-color headerbar_fg_color {{colors.on_surface.dark.hex}};
+    @define-color popover_bg_color {{colors.surface_dim.dark.hex}};
+    @define-color popover_fg_color {{colors.on_surface.dark.hex}};
+    @define-color view_bg_color {{colors.surface.dark.hex}};
+    @define-color view_fg_color {{colors.on_surface.dark.hex}};
+    @define-color card_bg_color {{colors.surface.dark.hex}};
+    @define-color card_fg_color {{colors.on_surface.dark.hex}};
+    @define-color sidebar_bg_color @window_bg_color;
+    @define-color sidebar_fg_color @window_fg_color;
+    @define-color sidebar_border_color @window_bg_color;
+    @define-color sidebar_backdrop_color @window_bg_color;
+}
+
+/*
+ * Frosted Glass Effect
+ *
+ * How this works:
+ *   - The top-level `window` gets one semi-transparent background (alpha 0.85).
+ *   - Every internal container is forced fully transparent so backgrounds don't
+ *     stack into opaque darkness.
+ *   - Niri's `background-effect { blur true }` blurs the desktop behind the
+ *     transparent regions of the Wayland surface.
+ *   - The sidebar is painted by libadwaita's C code and cannot be made
+ *     transparent via CSS alone — it stays as-is.
+ *
+ * Selectors explained:
+ *   window                   – the GtkWindow itself (the Wayland surface root)
+ *   headerbar / .titlebar    – the top toolbar with navigation buttons
+ *   .navigation-sidebar      – Nautilus sidebar (CSS portion; C portion is opaque)
+ *   splitview / flap / paned – libadwaita split-view containers
+ *   stack / overlay           – GTK layout containers
+ *   scrolledwindow / viewport – scrollable content wrappers
+ *   .content-pane            – Nautilus main content region
+ */
+
+/* Single transparent tint on the window surface */
+window {
+    background-color: alpha(@window_bg_color, 0.85);
+}
+
+/* Force all internal containers transparent to prevent stacking */
+headerbar,
+.titlebar,
+.navigation-sidebar,
+splitview,
+flap,
+stack,
+paned,
+overlay,
+separator,
+windowhandle,
+scrolledwindow,
+viewport,
+.content-pane {
+    background-color: transparent;
+    background: none;
+}
+
+/* Popovers (right-click menus, dropdowns) — keep slightly opaque for readability */
+popover,
+popover > contents {
+    background-color: alpha(@popover_bg_color, 0.85);
+}

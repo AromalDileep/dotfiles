@@ -354,10 +354,13 @@ window-rule {
     open-floating true
 }
 
-// Open GNOME Files (Nautilus) as floating
+// Open GNOME Files (Nautilus) as floating with frosted glass blur
 window-rule {
     match app-id=r#"^org\.gnome\.Nautilus$"#
     open-floating true
+    background-effect {
+        blur true
+    }
 }
 
 // Open GNOME Loupe (Image Viewer) as floating
