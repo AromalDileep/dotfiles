@@ -1,0 +1,72 @@
+{
+    "c4ff0914-61b6-40e1-86dc-c4ec71668f0d": {
+        "id": "c4ff0914-61b6-40e1-86dc-c4ec71668f0d",
+        "name": "Google Search",
+        "keyword": "g",
+        "cmd": "https://google.com/search?q=%s",
+        "icon": "/usr/share/ulauncher/media/google-search-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1769609597.6962159
+    },
+    "8561b55e-ccee-41e3-89fc-f9e0e0e72635": {
+        "id": "8561b55e-ccee-41e3-89fc-f9e0e0e72635",
+        "name": "Stack Overflow",
+        "keyword": "so",
+        "cmd": "https://stackoverflow.com/search?q=%s",
+        "icon": "/usr/share/ulauncher/media/stackoverflow-icon.svg",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1769609597.6962261
+    },
+    "f706d267-0db0-4faf-bc7b-80e7d3516108": {
+        "id": "f706d267-0db0-4faf-bc7b-80e7d3516108",
+        "name": "Wikipedia",
+        "keyword": "wiki",
+        "cmd": "https://en.wikipedia.org/wiki/%s",
+        "icon": "/usr/share/ulauncher/media/wikipedia-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1769609597.696231
+    },
+    "055b7658-15f5-4cab-ad9e-bb62fc5b36a7": {
+        "id": "055b7658-15f5-4cab-ad9e-bb62fc5b36a7",
+        "name": "Icon-Icons",
+        "keyword": "icon",
+        "cmd": "https://icon-icons.com/search?q=%s",
+        "icon": "~/Pictures/icons/icon-icons.svg",
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1769663004.0234022
+    },
+    "482753ae-ab8a-49f6-af77-e5d42b4a522c": {
+        "id": "482753ae-ab8a-49f6-af77-e5d42b4a522c",
+        "name": "nerfonts",
+        "keyword": "nerd",
+        "cmd": "https://www.nerdfonts.com/cheat-sheet",
+        "icon": "~/Pictures/icons/nerd-fonts-logo.svg",
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1769663601.987225
+    },
+    "0ae06d34-fbd0-45ab-a9b8-5dbe48643e63": {
+        "id": "0ae06d34-fbd0-45ab-a9b8-5dbe48643e63",
+        "name": "Kaggle",
+        "keyword": "kaggle",
+        "cmd": "https://www.kaggle.com/",
+        "icon": "~/Pictures/icons/site-logo.svg",
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1769663701.9426317
+    },
+    "80faaf6a-36d0-4d54-bc0e-64f0b864c2af": {
+        "id": "80faaf6a-36d0-4d54-bc0e-64f0b864c2af",
+        "name": "GitHub",
+        "keyword": "git",
+        "cmd": "https://github.com/",
+        "icon": "~/Pictures/icons/Github_icon-icons.com_49946.png",
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1769664067.1254752
+    }
+}
