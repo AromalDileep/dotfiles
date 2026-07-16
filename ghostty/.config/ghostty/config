@@ -33,7 +33,7 @@ window-colorspace = srgb
 
 # Transparent background
 # background = 000000 # sets transparent background to black
-background-opacity = 0.92
+background-opacity = 0.75
 background-blur = true
 
 #
