@@ -67,7 +67,7 @@
 
 /* Single transparent tint on the window surface */
 window {
-    background-color: alpha(@window_bg_color, 0.85);
+    background-color: alpha(@window_bg_color, 0.78);
 }
 
 /* Force all internal containers transparent to prevent stacking */
