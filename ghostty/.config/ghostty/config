@@ -167,6 +167,6 @@ auto-update = off
 # custom-shader = shaders/fx/sin-interference.glsl
 # custom-shader = shaders/fx/sparks.glsl
 # custom-shader = shaders/fx/sparks-from-fire.glsl
-custom-shader = shaders/fx/test.glsl
+# custom-shader = shaders/fx/test.glsl
 # custom-shader = shaders/fx/WIP.glsl
 
