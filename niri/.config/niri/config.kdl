@@ -271,10 +271,10 @@ animations {
 
 // Global blur settings for a high-quality, aesthetic background blur
 blur {
-    passes 3          // Higher passes = smoother blur (3 is a great balance)
-    offset 3.0        // Spread of the blur
+    passes 3          // Middle ground for passes
+    offset 2.0        // Slightly higher spread for a bit more frost
     noise 0.02        // Slight grain to prevent color banding
-    saturation 1.25   // Boost colors slightly through the blur for a vibrant look
+    saturation 2.0   // Middle ground for saturation
 }
 
 // Window rules let you adjust behavior for individual windows.
