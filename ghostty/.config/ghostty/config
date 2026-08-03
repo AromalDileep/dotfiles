@@ -9,13 +9,13 @@ theme = Gruvbox Material Dark
 # -------------------------
 # Font
 # -------------------------
-font-family = JetBrainsMono Nerd Font Mono
-font-size = 11.5
+font-family = JetBrains Mono Nerd Font
+font-size = 11
 
 # Enable font features (ligatures for FiraCode)
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
+# font-feature = -calt
+# font-feature = -liga
+# font-feature = -dlig
 
 # -------------------------
 # Window
