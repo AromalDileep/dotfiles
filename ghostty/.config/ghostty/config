@@ -4,7 +4,7 @@
 # -------------------------
 # Theme
 # -------------------------
-theme = Catppuccin Macchiato
+theme = Gruvbox Material Dark
 
 # -------------------------
 # Font
