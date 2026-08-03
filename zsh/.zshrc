@@ -93,42 +93,14 @@ fi
 
 [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 
-# yazi wrapper: sync shell cwd with yazi on exit
-y() {
-  local tmp
-  tmp="$(mktemp)" || return
-  yazi --cwd-file="$tmp"
-  if [ -s "$tmp" ]; then
-    local cwd
-    cwd="$(cat "$tmp")"
-    [ -d "$cwd" ] && cd "$cwd"
-  fi
-  rm -f "$tmp"
-}
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/modules/yazi.zsh"
 
-# Zoxide initialization:
-# - Enables frecency-based directory jumping
-# - Overrides `cd` instead of introducing `z`
-eval "$(zoxide init --cmd cd zsh)"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/modules/zoxide.zsh"
 
 # Created by `pipx` on 2025-12-18 05:34:32 (Kitty priority)
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
-# nvm (Node Version Manager - Lazy Loaded)
-export NVM_DIR="$HOME/.nvm"
-_lazy_load_nvm() {
-  unset -f nvm node npm npx yarn pnpm _lazy_load_nvm
-  if [ -s "$NVM_DIR/nvm.sh" ]; then
-    . "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-  fi
-}
-nvm() { _lazy_load_nvm; nvm "$@"; }
-node() { _lazy_load_nvm; node "$@"; }
-npm() { _lazy_load_nvm; npm "$@"; }
-npx() { _lazy_load_nvm; npx "$@"; }
-yarn() { _lazy_load_nvm; yarn "$@"; }
-pnpm() { _lazy_load_nvm; pnpm "$@"; }
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/modules/nvm.zsh"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
