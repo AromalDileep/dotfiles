@@ -35,6 +35,9 @@ eval "$(starship init zsh)"
 # ------------------------
 # Zsh Plugins
 # ------------------------
+autoload -Uz compinit
+compinit
+
 # Disable autosuggestions
 # source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
