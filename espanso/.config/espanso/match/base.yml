@@ -248,3 +248,113 @@ matches:
   - trigger: ":startdocker"
     replace: |
       systemctl --user start docker-desktop
+  # --- Useful Symbols ---
+
+  - trigger: :arrow
+    replace: "→"
+
+  - trigger: :larrow
+    replace: "←"
+
+  - trigger: :uarrow
+    replace: "↑"
+
+  - trigger: :darrow
+    replace: "↓"
+
+  - trigger: :lr
+    replace: "↔"
+
+  - trigger: :ud
+    replace: "↕"
+
+  - trigger: :done
+    replace: "✓"
+
+  - trigger: :notdone
+    replace: "✗"
+
+  - trigger: :warning
+    replace: "⚠"
+
+  - trigger: :info
+    replace: "ℹ"
+
+  - trigger: :bullet
+    replace: "•"
+
+  - trigger: :diamond
+    replace: "◆"
+
+  - trigger: :circle
+    replace: "●"
+
+  - trigger: :square
+    replace: "■"
+
+  - trigger: :degree
+    replace: "°"
+
+  - trigger: :plusminus
+    replace: "±"
+
+  - trigger: :mul
+    replace: "×"
+
+  - trigger: :divide
+    replace: "÷"
+
+  - trigger: :infinity
+    replace: "∞"
+
+  - trigger: :approx
+    replace: "≈"
+
+  - trigger: :notequal
+    replace: "≠"
+
+  - trigger: :le
+    replace: "≤"
+
+  - trigger: :ge
+    replace: "≥"
+
+  - trigger: :sqrt
+    replace: "√"
+
+  - trigger: :pi
+    replace: "π"
+
+  - trigger: :copyright
+    replace: "©"
+
+  - trigger: :registered
+    replace: "®"
+
+  - trigger: :tm
+    replace: "™"
+
+  - trigger: :euro
+    replace: "€"
+
+  - trigger: :pound
+    replace: "£"
+
+  - trigger: :yen
+    replace: "¥"
+
+  - trigger: :rupee
+    replace: "₹"
+
+  - trigger: :heart
+    replace: "♥"
+
+  - trigger: :blackheart
+    replace: "🖤"
+
+  - trigger: :coffee
+    replace: "☕"
+
+  - trigger: :fire
+    replace: "🔥"
+
