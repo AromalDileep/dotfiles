@@ -15,13 +15,10 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 
 # ---------------------------------------
-# LS colors (file / directory distinction)
+# Directory listing
 # ---------------------------------------
-if command -v dircolors >/dev/null 2>&1; then
-  eval "$(dircolors)"
-fi
-
-alias ls='ls --color=auto'
+alias ls='eza --icons --total-size'
+alias tree='eza --tree --icons'
 
 # Command-completion notifications (policy loads before the implementation).
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/config/command-notify.zsh"
