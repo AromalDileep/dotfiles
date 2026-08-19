@@ -322,6 +322,9 @@ matches:
   - trigger: :sqrt
     replace: "√"
 
+  - trigger: :cuberoot
+    replace: "∛"
+
   - trigger: :pi
     replace: "π"
 
