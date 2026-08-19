@@ -240,3 +240,11 @@ matches:
   - trigger: ":standup"
     replace: |
       Prepare a concise stand-up update covering: what I completed, what I am currently working on, any blockers, and what I plan to work on next.
+
+  - trigger: ":stopdocker"
+    replace: |
+      systemctl --user stop docker-desktop
+
+  - trigger: ":startdocker"
+    replace: |
+      systemctl --user start docker-desktop
