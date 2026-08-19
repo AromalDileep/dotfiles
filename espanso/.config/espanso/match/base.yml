@@ -140,3 +140,103 @@ matches:
       C. PLAN NEEDS IMPROVEMENT — the plan requires substantive changes before implementation.
 
       Provide only the appropriate next-step prompt based on that classification.
+
+  # --- Useful shortcuts added for best experience ---
+
+
+  # Current time
+  - trigger: ":time"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%I:%M %p"
+
+  # Lorem ipsum placeholder
+  - trigger: ":ipsum"
+    replace: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+
+  # Signature
+  - trigger: ":br"
+    replace: |
+      Best regards,
+      Aromal
+
+  # Email Shortcuts
+  - trigger: ":emwork"
+    replace: "aromalwork@gmail.com"
+  
+  - trigger: ":em47"
+    replace: "aromaldileep47@gmail.com"
+
+  - trigger: ":em33"
+    replace: "joshyliya33@gmail.com"
+
+  - trigger: ":em96"
+    replace: "aromaldileep96@gmail.com"
+
+  - trigger: ":em99"
+    replace: "aromaldileep99@gmail.com"
+
+  # --- Development Workflow Shortcuts ---
+
+  - trigger: ":rootcause"
+    replace: |
+      Find and explain the root cause before making any changes. Do not apply a workaround unless the root cause cannot reasonably be fixed.
+
+  - trigger: ":inspect"
+    replace: |
+      Inspect the relevant files, existing implementation, configuration, tests, and related code before making any changes. Do not modify anything yet.
+
+  - trigger: ":minimal"
+    replace: |
+      Make the smallest change necessary to solve the problem. Preserve existing behavior and avoid unrelated refactoring or changes.
+
+  - trigger: ":nopresume"
+    replace: |
+      Do not assume missing information. Inspect the codebase, configuration, logs, tests, and documentation as needed before reaching a conclusion.
+
+  - trigger: ":verify"
+    replace: |
+      Verify the implementation against the requirements and existing behavior. Do not assume anything; inspect the actual code and tests and confirm the result.
+
+  - trigger: ":diff"
+    replace: |
+      Review the current Git diff carefully. Identify unintended, unrelated, temporary, debug, generated, or unnecessary changes. Do not modify anything unless explicitly requested.
+
+  - trigger: ":fail"
+    replace: |
+      Investigate the test failure. Identify the actual root cause, make the smallest appropriate fix, and rerun the failing test. Do not modify tests merely to make them pass unless the test itself is incorrect.
+
+  - trigger: ":regression"
+    replace: |
+      Before making changes, identify existing behavior that must be preserved. After the change, verify that behavior and check for regressions.
+
+  - trigger: ":llmflow"
+    replace: |
+      Trace the complete LLM request flow from the entry point to the provider and back. Identify configuration, dependency injection, prompt construction, model selection, error handling, retries, fallback behavior, and response parsing.
+
+  - trigger: ":backend"
+    replace: |
+      This is backend work. Use the existing Docker Compose backend container for all commands. Never use the host Python environment or install backend dependencies on the host.
+
+  - trigger: ":pytest"
+    replace: |
+      Run the relevant pytest tests for the current changes. Investigate and fix any failures, then rerun the affected tests until they pass. Do not modify tests merely to make them pass unless the tests are incorrect.
+
+  - trigger: ":lint"
+    replace: |
+      Run the relevant linting and static analysis checks for the current changes. Fix genuine issues without introducing unrelated changes, then rerun the checks until they pass.
+
+  - trigger: ":status"
+    replace: |
+      Review the current Git status and summarize what files have been modified, added, deleted, or untracked. Do not make any changes.
+
+  - trigger: ":eod"
+    replace: |
+      Prepare a concise end-of-day work update covering what was completed, what is currently in progress, any blockers, and what will be worked on next.
+
+  - trigger: ":standup"
+    replace: |
+      Prepare a concise stand-up update covering: what I completed, what I am currently working on, any blockers, and what I plan to work on next.
