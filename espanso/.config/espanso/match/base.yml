@@ -39,7 +39,7 @@ matches:
 
   # And much more! For more information, visit the docs: https://espanso.org/docs/
 
-  - trigger: ":com"
+  - trigger: ":oneco"
     replace: |
       Give me only one command at a time.
 
@@ -57,7 +57,7 @@ matches:
 
       Do not commit or create any Git commits. Leave the changes uncommitted for review.
 
-  - trigger: "doc"
+  - trigger: ":doc"
     replace: |
 
       ## Docker Execution Requirement (Applies to the Entire Backend)
@@ -78,3 +78,65 @@ matches:
       * If a command requires access to backend services (Redis, PostgreSQL, Prometheus, etc.), execute it within the Docker Compose environment so it uses the same networking and configuration as production.
       * Do not introduce any workflow that depends on running backend components outside Docker.
       * Treat the Docker Compose environment as the single source of truth for backend development, testing, and validation throughout every phase of this project.
+
+  - trigger: ":com"
+    replace: |
+      Commit the current changes.
+
+      Before committing:
+
+      1. Review the working tree and Git diff carefully.
+      2. Identify any temporary, generated, debug, diagnostic, or test files created during this work that are not intended to be part of the project.
+      3. Delete only those temporary/unnecessary files. Do not delete legitimate project files or existing user files.
+      4. Review the final diff again to ensure only the intended changes remain.
+      5. Run the relevant tests/checks if appropriate and make sure they pass.
+      6. Stage the intended changes.
+      7. Create a clear, concise, conventional commit message that accurately describes the actual changes.
+      8. Create the commit.
+      9. Verify the final Git status and confirm what was committed.
+
+      Do not push to any remote repository.
+
+      Do not make unrelated code or configuration changes. Do not modify files merely to make the commit cleaner; only clean up temporary artifacts created during this work.
+
+  - trigger: ":check"
+    replace: |
+
+      Review the provided implementation plan carefully against the actual codebase and requirements.
+
+      Do not implement anything yet.
+
+      Determine whether the plan is technically correct, complete, and safe to implement.
+
+      * If you are completely confident that the plan is correct and no clarification is needed, provide a prompt I can paste into the IDE to implement the plan.
+      * If there are specific uncertainties or ambiguities that must be resolved before implementation, provide a prompt I can paste into the IDE to investigate and clarify those questions. Do not invent answers.
+      * If the plan needs material changes to be correct or safe, provide a prompt I can paste into the IDE to review and improve the implementation plan based on your findings.
+
+      Do not suggest changes merely for the sake of improvement. Only recommend modifications when they are genuinely important for correctness, compatibility, maintainability, security, testing, or preserving existing functionality.
+
+      Inspect the actual codebase, existing implementation, relevant Git history/diffs, tests, and configuration where necessary before reaching a conclusion.
+
+      When reviewing the plan, pay particular attention to:
+
+      1. Whether the proposed implementation matches the existing architecture and coding patterns.
+      2. Whether the stated assumptions are actually true in the current codebase.
+      3. Whether any existing functionality could be broken.
+      4. Whether edge cases and failure scenarios are adequately handled.
+      5. Whether database/API/frontend/backend changes are consistent with each other.
+      6. Whether migrations or backward compatibility are required.
+      7. Whether the testing strategy adequately covers the change.
+      8. Whether the plan introduces unnecessary complexity.
+      9. Whether the implementation can be simplified without sacrificing correctness.
+      10. Whether the plan is missing any important implementation steps.
+
+      Do not modify the code while reviewing.
+
+      At the end, classify the result as exactly one of:
+
+      A. READY TO IMPLEMENT — no meaningful issues or unresolved questions.
+
+      B. CLARIFICATION REQUIRED — specific questions must be answered before implementation.
+
+      C. PLAN NEEDS IMPROVEMENT — the plan requires substantive changes before implementation.
+
+      Provide only the appropriate next-step prompt based on that classification.
