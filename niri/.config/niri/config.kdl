@@ -323,12 +323,27 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.gnome\.Characters$"#
     open-floating true
+    background-effect {
+        blur true
+    }
 }
 
 // Open GNOME Calculator as floating
 window-rule {
     match app-id=r#"^org\.gnome\.Calculator$"#
     open-floating true
+    background-effect {
+        blur true
+    }
+}
+
+// Open Document Viewer (Evince / Papers) with blur
+window-rule {
+    match app-id=r#"^org\.gnome\.Evince$"#
+    match app-id=r#"^org\.gnome\.Papers$"#
+    background-effect {
+        blur true
+    }
 }
 
 // Enable beautiful background blur for Ghostty terminal
@@ -352,6 +367,9 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.gnome\.clocks$"#
     open-floating true
+    background-effect {
+        blur true
+    }
 }
 
 // Open GNOME Files (Nautilus) as floating with frosted glass blur
@@ -367,6 +385,9 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.gnome\.Loupe$"#
     open-floating true
+    background-effect {
+        blur true
+    }
 }
 // VS Code: glass transparency (text stays crisp)
 // window-rule {
